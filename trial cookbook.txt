@@ -1,0 +1,6 @@
+rule 'SC019', 'metadata should not contain "attribute" keyword' do
+  tags %w(metadata supermarket chef12)
+  metadata do |ast, filename|
+    [file_match(filename)] if field(ast, 'attribute').any?
+  end
+end
